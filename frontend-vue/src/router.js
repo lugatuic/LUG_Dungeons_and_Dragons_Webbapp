@@ -8,11 +8,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -21,9 +16,19 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path:'/misha',
-      name:'/misha',
-      component: misha
+      path:'/Home_page',
+      name:'Home_page',
+      component: Home_page
+    },
+    {
+      path:'/Char_input',
+      name:'Char_input',
+      component: Char_input
+    },
+    {
+      path:'/Output_page',
+      name:'Output_page',
+      component: Output_page
     }
 
   ]
