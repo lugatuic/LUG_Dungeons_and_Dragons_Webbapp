@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home_page from './views/Home_page.vue'
+import Home from './views/Home.vue'
 import Char_input from './views/Char_input.vue'
-import Output_page from './vews/Output_page.vue'
+import Char_ouput from './views/Char_ouput.vue'
 
 
 Vue.use(Router)
@@ -19,18 +19,18 @@ export default new Router({
     },
     {
       path:'/',
-      name:'Home_page',
-      component: Home_page
+      name:'Home',
+      component: Home
     },
     {
-      path:'/Char_input',
+      path:'/char_input',
       name:'Char_input',
       component: Char_input
     },
     {
-      path:'/Output_page',
-      name:'Output_page',
-      component: Output_page
+      path:'/char_ouput',
+      name:'Char_output',
+      component: Char_ouput
     }
 
   ]
