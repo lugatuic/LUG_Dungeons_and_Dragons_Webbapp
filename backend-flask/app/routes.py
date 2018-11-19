@@ -7,7 +7,7 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return jsonify({"Home": "Hello World"})
+    return "Hello World"
 
 
 @app.route('/character_creation')
