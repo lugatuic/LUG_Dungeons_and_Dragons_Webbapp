@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import misha from '@/views/misha.vue';
+import Home_page from './views/Home_page.vue'
+import Char_input from './views/Char_input.vue'
+import Output_page from './vews/Output_page.vue'
+
 
 Vue.use(Router)
 
@@ -16,7 +18,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path:'/Home_page',
+      path:'/',
       name:'Home_page',
       component: Home_page
     },

@@ -1,3 +1,3 @@
-<<template>
-    <div>I am misha</div>
+<template>
+  <div>I am misha</div>
 </template>

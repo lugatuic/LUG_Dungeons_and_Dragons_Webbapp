@@ -1,3 +1,3 @@
 <template>
-    <div>I am the character input page</div>
+  <div>I am the character input page</div>
 </template>
