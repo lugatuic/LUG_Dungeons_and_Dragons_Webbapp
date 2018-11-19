@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Char_input from './views/Char_input.vue'
-import Char_ouput from './views/Char_ouput.vue'
+import Char_output from './views/Char_output.vue'
 
 
 Vue.use(Router)
@@ -28,9 +28,9 @@ export default new Router({
       component: Char_input
     },
     {
-      path:'/char_ouput',
+      path:'/char_output',
       name:'Char_output',
-      component: Char_ouput
+      component: Char_output
     }
 
   ]
