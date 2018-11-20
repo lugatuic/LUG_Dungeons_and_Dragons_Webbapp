@@ -19,6 +19,11 @@ $ source venv/bin/activate
 For windows users using cmd:
 > venv\Scripts\activate
 
+Powershell script:
+> venv\Scripts\activate.ps1
+
+Note*: If Powershell gives an execution error, just use cmd or follow this link to see execution policy documentation: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1
+
 To exit out of the VM:
 $ deactivate
 
