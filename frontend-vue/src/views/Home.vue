@@ -1,26 +1,41 @@
 <template>
-  <v-container justify-center>
+  <v-container>
     <!-- TODO: refactor into its own component -->
-    <v-layout row wrap>
-      <v-flex xs12>
-        <h1 class="headline text-xs-center">Character List</h1>
-      </v-flex>
-      <v-flex xs12>
-        <v-list two-line>
-          <v-list-tile v-for="(char, i) in characters" :key="i" avatar>
-            <v-list-tile-avatar>
-              <v-icon>person</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <!-- name -->
-              <v-list-tile-title>{{ char[0] }}</v-list-tile-title>
+    <v-layout row>
+      <v-flex>
+        <v-card raised>
+          <v-card-title>
+            <v-spacer/>
+            <h1 class="headline">Select a Character</h1>
+            <v-spacer/>
+          </v-card-title>
+          <v-list two-line>
+            <v-list-tile v-for="(char, i) in characters" :key="i" avatar @click="selectCharacter(char)">
+              <v-list-tile-avatar>
+                <v-icon>person</v-icon>
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <!-- name -->
+                <v-list-tile-title>{{ char[0] }}</v-list-tile-title>
 
-              <!-- description -->
-              <v-list-tile-subtitle>{{ char[1] }}</v-list-tile-subtitle>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
+                <!-- description -->
+                <v-list-tile-sub-title>{{ char[1] }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-card>
       </v-flex>
+    </v-layout>
+    <v-layout>
+      <v-btn class="ml-0" color="success">
+        <v-icon left>add</v-icon>
+        Create your own
+      </v-btn>
+      <v-spacer/>
+      <v-btn class="mr-0" color="success">
+        Generate Random
+        <v-icon right>casino</v-icon>
+      </v-btn>
     </v-layout>
   </v-container>
 </template>
@@ -35,6 +50,11 @@ const sampleCharacters = [
 export default {
   computed: {
     characters: () => sampleCharacters,
+  },
+  methods: {
+    selectCharacter (char) {
+      console.debug('selected character', char);
+    },
   },
 };
 </script>
