@@ -9,6 +9,7 @@
             <h1 class="headline">Select a Character</h1>
             <v-spacer/>
           </v-card-title>
+          <v-divider/>
           <v-list two-line>
             <v-list-tile v-for="(char, i) in characters" :key="i" avatar @click="selectCharacter(char)">
               <v-list-tile-avatar>
@@ -27,12 +28,12 @@
       </v-flex>
     </v-layout>
     <v-layout>
-      <v-btn class="ml-0" color="success">
+      <v-btn class="ml-0" color="green darken-2 white--text">
         <v-icon left>add</v-icon>
         Create your own
       </v-btn>
       <v-spacer/>
-      <v-btn class="mr-0" color="success">
+      <v-btn class="mr-0" color="green darken-2 white--text">
         Generate Random
         <v-icon right>casino</v-icon>
       </v-btn>

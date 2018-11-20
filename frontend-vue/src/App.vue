@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :dark="!useLightTheme">
     <app-bar/>
     <v-content>
       <router-view/>
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import AppBar from '@/components/AppBar';
 
 export default {
@@ -15,10 +16,8 @@ export default {
   components: {
     AppBar,
   },
-  data () {
-    return {
-      //
-    }
+  computed: {
+    ...mapState(['useLightTheme']),
   }
 }
 </script>
