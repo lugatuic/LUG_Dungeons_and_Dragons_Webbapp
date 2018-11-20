@@ -60,6 +60,6 @@ $ export FLASK_DEBUG=1
 ERROR CHECKING
 Pylint is a great linter for this project so we will be using that to check for errors or warnings before running.
 
-Installation is the same on windows as it is for linux:
+To lint the app, use the command:
 
-$ pip install pylint
+$ pylint app_name.py
