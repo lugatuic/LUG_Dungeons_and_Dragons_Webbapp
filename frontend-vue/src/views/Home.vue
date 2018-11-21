@@ -10,17 +10,25 @@
             <v-spacer/>
           </v-card-title>
           <v-divider/>
-          <v-list two-line>
-            <v-list-tile v-for="(char, i) in characters" :key="i" avatar @click="selectCharacter(char)">
+          <div v-if="isLoading" class="text-xs-center pa-3">
+            <v-progress-circular indeterminate/>
+          </div>
+          <v-list two-line v-else>
+            <v-list-tile
+              v-for="(char, i) in characters"
+              :key="i"
+              avatar
+              :to="`/char_output/${char.id}`"
+              @click="selectCharacter(char)">
               <v-list-tile-avatar>
                 <v-icon>person</v-icon>
               </v-list-tile-avatar>
               <v-list-tile-content>
                 <!-- name -->
-                <v-list-tile-title>{{ char[0] }}</v-list-tile-title>
+                <v-list-tile-title>{{ char.name }}</v-list-tile-title>
 
                 <!-- description -->
-                <v-list-tile-sub-title>{{ char[1] }}</v-list-tile-sub-title>
+                <v-list-tile-sub-title><i v-text="char.catchphrase"/></v-list-tile-sub-title>
               </v-list-tile-content>
             </v-list-tile>
           </v-list>
@@ -42,20 +50,29 @@
 </template>
 
 <script>
-// TODO: replace with actual data
-const sampleCharacters = [
-  ['Character 1', 'A cool character'],
-  ['Character 2', 'Second is best'],
-  ['Character 3', 'A description goes here'],
-];
+import { mapActions } from 'vuex';
 export default {
-  computed: {
-    characters: () => sampleCharacters,
-  },
   methods: {
+    ...mapActions('characters', ['getAll']),
     selectCharacter (char) {
       console.debug('selected character', char);
     },
+  },
+  data () {
+    return {
+      isLoading: true,
+      characters: [],
+    };
+  },
+  async mounted () {
+    try {
+      const characters = await this.getAll();
+      this.characters = characters.slice();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.isLoading = false;
+    }
   },
 };
 </script>

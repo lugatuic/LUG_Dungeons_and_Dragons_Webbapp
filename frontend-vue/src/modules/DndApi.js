@@ -14,10 +14,16 @@ export class DndApi {
   }
 
   // warn developers that mock data is being returned
-  _checkParamsForMock (params, url) {
+  async _checkParamsForMock (params, url) {
     if (typeof params === 'object' && params.isMock) {
       console.warn('using mock data for API call', url);
+      await this._mockDelay();
     }
+  }
+
+  _mockDelay (length = 1000) {
+    console.warn('using a mock delay (ms):', length);
+    return new Promise(fulfill => setTimeout(fulfill, length));
   }
 
   _objectToUrlParams (params = {}) {
@@ -37,7 +43,7 @@ export class DndApi {
 
   async getAllCharacters (params = {}) {
     const apiUrl = this._toApiUrl('/api/character', params);
-    this._checkParamsForMock(params, apiUrl);
+    await this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
       : Promise.resolve(mockCharacters.slice());
@@ -45,7 +51,7 @@ export class DndApi {
 
   async getSingleCharacter (id, params = {}) {
     const apiUrl = this._toApiUrl(`/api/character/${id}`, params);
-    this._checkParamsForMock(params, apiUrl);
+    await this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
       : Promise.resolve(mockCharacters.find(c => c.id === id));

@@ -14,15 +14,15 @@ const mutations = {
 };
 
 const actions = {
-  async getAll ({ commit, state }, { storeResult = false }) {
+  async getAll ({ commit, state }, input = { storeResult: false }) {
     const characters = await api.getAllCharacters({ isMock: state.useMockData });
-    if (storeResult) {
+    if (input.storeResult) {
       commit('setCharactersList', characters);
     }
     return characters;
   },
-  async getSingle ({ state }, { id }) {
-    const character = await api.getSingleCharacter(id, { isMock: state.useMockData });
+  async getSingle ({ state }, input = { id: '' }) {
+    const character = await api.getSingleCharacter(input.id, { isMock: state.useMockData });
     return character;
   },
 };
