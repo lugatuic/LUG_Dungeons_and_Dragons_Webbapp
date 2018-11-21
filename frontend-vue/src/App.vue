@@ -2,7 +2,9 @@
   <v-app :dark="!useLightTheme">
     <app-bar/>
     <v-content>
-      <router-view/>
+      <v-fade-transition mode="out-in">
+        <router-view/>
+      </v-fade-transition>
     </v-content>
   </v-app>
 </template>
