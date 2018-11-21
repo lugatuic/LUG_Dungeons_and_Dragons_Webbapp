@@ -28,10 +28,10 @@ export default new Router({
       component: Char_input
     },
     {
-      path:'/char_output',
+      path:'/char_output/:id',
       name:'Char_output',
-      component: Char_output
-    }
-
-  ]
-})
+      component: Char_output,
+      props: true,
+    },
+  ],
+});
