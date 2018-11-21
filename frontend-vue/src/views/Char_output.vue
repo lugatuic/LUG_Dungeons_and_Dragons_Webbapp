@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid grid-list-lg>
     <v-layout v-if="isLoading">
       <v-flex class="text-xs-center">
         <v-progress-circular indeterminate/>
@@ -8,14 +8,52 @@
     </v-layout>
     <template v-else>
       <v-layout row wrap>
+        <!-- TODO: refactor each section into its own component once sections are finalized-->
         <!-- left column -->
         <v-flex xs12 md6 d-flex>
           <v-layout column>
+            <!-- top left quadrant -->
             <v-flex>
-              general info here
+              <v-layout wrap>
+                <v-flex>
+                  <v-text-field
+                    :value="character.name"
+                    label="Name"
+                    readonly/>
+                </v-flex>
+                <v-flex>
+                  <v-text-field
+                    value="some title"
+                    label="Title"
+                    readonly/>
+                </v-flex>
+              </v-layout>
+              <v-layout wrap>
+                <v-flex>
+                  <v-text-field
+                    value="some occupation"
+                    label="Occupation"
+                    readonly/>
+                </v-flex>
+                <v-flex>
+                  <v-text-field
+                    value="some class"
+                    label="Class"
+                    readonly/>
+                </v-flex>
+                <v-flex>
+                  <v-text-field
+                    value="some alignment"
+                    label="Alignment"
+                    readonly/>
+                </v-flex>
+              </v-layout>
+              <!-- TODO: add more fields as necessary -->
             </v-flex>
+
+            <!-- bottom left quadrant -->
             <v-flex>
-              stats here
+              stats here, maybe a fancy radar chart?
             </v-flex>
           </v-layout>
         </v-flex>
@@ -23,22 +61,18 @@
         <!-- right column -->
         <v-flex xs12 md6 d-flex>
           <v-layout column>
+            <!-- top right quadrant -->
             <v-flex>
-              equipment here
+              equipment cards here
             </v-flex>
+
+            <!-- bottom right quadrant -->
             <v-flex>
               abilities and spells here
             </v-flex>
           </v-layout>
         </v-flex>
       </v-layout>
-
-      <!-- TODO: refactor each section into its own component -->
-      <!-- left column -->
-      
-
-      <!-- right column -->
-      
     </template>
   </v-container>
 </template>
@@ -70,5 +104,5 @@ export default {
       this.isLoading = false;
     }
   },
-}
+};
 </script>
