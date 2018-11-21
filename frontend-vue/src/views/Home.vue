@@ -45,7 +45,7 @@
       </v-btn>
       <v-spacer/>
       <v-btn
-        to="/char_input?random=true"
+        to="/char_input?randomize=true"
         class="mr-0"
         color="green darken-2 white--text">
         Generate Random
