@@ -36,12 +36,18 @@
       </v-flex>
     </v-layout>
     <v-layout>
-      <v-btn class="ml-0" color="green darken-2 white--text">
+      <v-btn
+        to="/char_input"
+        class="ml-0"
+        color="green darken-2 white--text">
         <v-icon left>add</v-icon>
         Create your own
       </v-btn>
       <v-spacer/>
-      <v-btn class="mr-0" color="green darken-2 white--text">
+      <v-btn
+        to="/char_input?random=true"
+        class="mr-0"
+        color="green darken-2 white--text">
         Generate Random
         <v-icon right>casino</v-icon>
       </v-btn>
