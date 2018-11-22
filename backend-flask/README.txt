@@ -17,7 +17,7 @@ For linux users:
 $ source venv/bin/activate
 
 For windows users using cmd:
-> venv\Scripts\activate
+> venv\Scripts\activate.bat
 
 Powershell script:
 > venv\Scripts\activate.ps1
@@ -30,23 +30,21 @@ $ deactivate
 -------------------------
 RUNNING THE APP
 In order to run the app, first you have to navigate to the directory the app is stored in. Than you must set an environment variable to the file that we want to be our flask application.
-For example, if our application was named DND.py we would input the following flag in the terminal:
+For example, if our application was named app.py we would input the following flag in the terminal:
 
 For Linux:
-$ export FLASK_APP=DND.py
+$ export FLASK_APP=app.py
 
 For Windows:
->set FLASK_APP=DND.py
+>set FLASK_APP=app.py
 
-To actually run the application, input the following:
+TO RUN THE APPLICATION, input the following:
 $ flask run
-    or
-$ python DND.py
 
 If you ran it correctly you should see the following information come up on your terminal:
 
-$ python DND.py
- * Serving Flask app "DND" (lazy loading)
+$ flask run
+ * Serving Flask app "app" (lazy loading)
  * Environment: production
    WARNING: Do not use the development server in a production environment.
    Use a production WSGI server instead.
