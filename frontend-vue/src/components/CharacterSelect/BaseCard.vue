@@ -20,6 +20,12 @@
         :isPremade="true"
         :character="char"
         @click="selectCharacter(char)"/>
+
+      <v-list-tile to="/">
+        <v-list-tile-content>
+          <v-list-tile-title class="text-xs-center">See All</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
     </v-list>
     <v-card-actions>
       <v-btn
