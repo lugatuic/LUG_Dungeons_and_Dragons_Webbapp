@@ -9,7 +9,7 @@ export default new Vuex.Store({
     characters,
   },
   state: {
-    useLightTheme: false,
+    useLightTheme: true,
   },
   mutations: {
     setLightThemeUsage (state, useLightTheme) {
