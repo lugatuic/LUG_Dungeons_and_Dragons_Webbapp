@@ -5,7 +5,7 @@
         <slot name="title">The Card Title</slot>
       </v-flex>
       <v-spacer/>
-      <v-btn icon @click="onRandomizeButtonClick">
+      <v-btn icon v-if="!disableInput" @click="onRandomizeButtonClick">
         <v-icon>casino</v-icon>
       </v-btn>
     </v-card-title>
@@ -18,6 +18,10 @@
 <script>
 export default {
   props: {
+    disableInput: {
+      type: Boolean,
+      default: false,
+    },
     onRandomizeButtonClick: {
       type: Function,
       default: () => console.debug('randomize button clicked')
