@@ -1,35 +1,38 @@
 <template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>open_in_new</v-icon>
-      </v-btn>
-    </v-toolbar>
-
+  <v-app :dark="!useLightTheme">
+    <app-bar v-model="showSidebar"/>
+    <side-bar v-model="showSidebar"/>
     <v-content>
-      <router-view/>
+      <v-fade-transition mode="out-in">
+        <router-view/>
+      </v-fade-transition>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import AppBar from '@/components/AppBar';
+import SideBar from '@/components/SideBar';
 
 export default {
   name: 'App',
-  data () {
-    return {
-      //
-    }
-  }
-}
+  components: {
+    AppBar,
+    SideBar,
+  },
+  computed: {
+    ...mapState(['useLightTheme']),
+  },
+  data: () => ({
+    showSidebar: false,
+  }),
+};
 </script>
+
+<style>
+html {
+  overflow: auto;
+}
+</style>
+

@@ -25,13 +25,14 @@ export default new Router({
     {
       path:'/char_input',
       name:'Char_input',
-      component: Char_input
+      component: Char_input,
+      props: (route) => ({ randomize: route.query.randomize === 'true' }),
     },
     {
-      path:'/char_output',
+      path:'/char_output/:id',
       name:'Char_output',
-      component: Char_output
-    }
-
-  ]
-})
+      component: Char_output,
+      props: true,
+    },
+  ],
+});

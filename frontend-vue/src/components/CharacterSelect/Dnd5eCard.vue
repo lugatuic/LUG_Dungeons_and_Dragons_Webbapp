@@ -1,26 +1,20 @@
 <template>
-  <v-container>
-    <!-- TODO: refactor into its own component -->
-    <v-layout row>
-      <v-flex>
-        <dnd5e-card/>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <base-card
+    systemName="DND 5e"
+    :isLoading="isLoading"
+    :premadeCharacters="characters"
+    :playerCharacters="characters"
+    createNewPlayerLink="/char_input?system=dnd5e"
+    :createRandomPlayerLink="'/char_input?system=dnd5e&randomize=true'"/>
 </template>
 
 <script>
-import Dnd5eCard from '@/components/CharacterSelect/Dnd5eCard';
+import BaseCard from '@/components/CharacterSelect/BaseCard';
 import { mapActions } from 'vuex';
+
 export default {
   components: {
-    Dnd5eCard,
-  },
-  methods: {
-    ...mapActions('characters', ['getAll']),
-    selectCharacter (char) {
-      console.debug('selected character', char);
-    },
+    BaseCard,
   },
   data () {
     return {
@@ -37,6 +31,9 @@ export default {
     } finally {
       this.isLoading = false;
     }
+  },
+  methods: {
+    ...mapActions('characters', ['getAll']),
   },
 };
 </script>
