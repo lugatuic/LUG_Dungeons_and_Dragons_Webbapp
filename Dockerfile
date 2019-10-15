@@ -1,7 +1,8 @@
-FROM fedora:26
+FROM alpine:latest
 
 COPY requirements.txt /root/requirements.txt
-RUN dnf install python-pip
+RUN apk add python
+run apk add py-pip
 RUN pip install -r /root/requirements.txt
 COPY . /dndApp
 WORKDIR /dndApp
