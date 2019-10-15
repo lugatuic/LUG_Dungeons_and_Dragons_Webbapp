@@ -1,1 +1,1 @@
-from app import app
+from dnd_app import app
