@@ -1,2 +1,3 @@
 docker build -t "dungeon" .
-docker run --rm -w /dndApp "dungeon" tox lint
+docker run --rm "dungeon" tox lint
+
