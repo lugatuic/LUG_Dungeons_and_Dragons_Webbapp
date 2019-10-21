@@ -44,11 +44,12 @@ def weaponCreate(user):  # Name, Class, Range, Damage, Penetration, Special, Wei
 @app.route('/<user>/createGame', methods=['POST', 'GET'])
 def gameCreate(user):
     if request.method == 'POST':
-        gameFile = {"game_name":"","Dungeon_Master":"","gameID":4,"Users":[],"msgLog":[]}
+        gameFile = {"game_name":"","Dungeon_Master":"","gameID": 4,"Users":[],"msgLog":[]}
     # TODO
     return render_template('gameCreation.html', title='Create game')
 
 @app.route('/<user>/modifyGame', methods=['POST', 'GET'])
-def gameModify(user,game):
+def gameModify(user, game):
+
     # TODO
     return render_template('modifyGame.html', title='Create game')
