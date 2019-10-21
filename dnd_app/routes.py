@@ -1,11 +1,12 @@
 from flask import Flask, flash, redirect, render_template, request, url_for
 from dnd_app import app
+from dnd_app.accountForms import RegistrationForm
 
 
 
 @app.route('/')
 def home():
-    return render_template('login.html', title='Home')
+    return render_template('index.html', title='LUG Dnd Webapp')
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -20,6 +21,9 @@ def login():
 def accountCreate():  # needs Username password, email
     # TODO
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Account Creation Requested for user {}'.format(
+            form.username.data))
     return render_template('accountCreation.html', title='Create Account', form=form)
 
 
