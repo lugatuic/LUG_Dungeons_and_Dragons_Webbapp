@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title> {{ title }} </title>
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -20,8 +20,14 @@
 </head>
 
 <body>
+  <div>
   <nav>
+    <p style="text-align:right">
+      <a href="/login">Login</a>
+      <a href="/createAccount">Create Account</a>
+    </p>
   </nav>
+  </div>
   {% block content %}
 
   
