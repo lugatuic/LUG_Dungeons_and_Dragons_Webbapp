@@ -5,7 +5,7 @@ from dnd_app import app
 
 @app.route('/')
 def home():
-    return render_template('login.html', title='Home')
+    return render_template('index.html', title='Home')
 
 
 @app.route('/login', methods=['POST', 'GET'])
