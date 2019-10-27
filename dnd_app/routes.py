@@ -2,6 +2,7 @@
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 from dnd_app import app
+from dnd_app.account_forms import RegistrationForm
 
 
 @app.route('/')
@@ -24,6 +25,9 @@ def account_create():  # needs Username password, email
     """Account creation form"""
     # TODO
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Account Creation Requested for user {}'.format(
+            form.username.data))
     return render_template('accountCreation.html', title='Create Account', form=form)
 
 
