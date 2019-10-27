@@ -62,6 +62,7 @@ def game_create(user):
     # TODO
     return render_template('gameCreation.html', title='Create game')
 
+
 @app.route('/<user>/modifyGame', methods=['POST', 'GET'])
 def game_modify(user, game):
     """Modify a game"""
