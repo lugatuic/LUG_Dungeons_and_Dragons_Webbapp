@@ -6,7 +6,7 @@ from dnd_app.accountForms import RegistrationForm
 
 @app.route('/')
 def home():
-    return render_template('index.html', title='LUG Dnd Webapp')
+    return render_template('index.html', title='Home')
 
 
 @app.route('/login', methods=['POST', 'GET'])

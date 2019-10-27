@@ -22,16 +22,23 @@
 <body>
   <div>
   <nav>
-    <p style="text-align:right">
-      <a href="/login">Login</a>
-      <a href="/createAccount">Create Account</a>
-    </p>
+    <div class="nav-wrapper container">
+      <ul class="right">
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </div>
   </nav>
-  </div>
-  {% block content %}
+  <div style="padding-top: 1pc; display: flex; justify-content: center;">
+    <div>
+      <img src="../static/img/wizardTux.png" style="max-height: 80vh">
+    </div>
+    <div>
+      {% block content %}
 
-  
-  {% endblock %}
+      
+      {% endblock %}
+    </div>
+  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
