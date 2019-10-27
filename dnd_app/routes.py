@@ -28,7 +28,8 @@ def account_create():  # needs Username password, email
     if form.validate_on_submit():
         flash('Account Creation Requested for user {}'.format(
             form.username.data))
-    return render_template('accountCreation.html', title='Create Account', form=form)
+    return render_template(
+        'accountCreation.html', title='Create Account', form=form)
 
 
 @app.route('/<user>/createCharacter', methods=['POST', 'GET'])
