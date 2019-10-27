@@ -1,4 +1,5 @@
 """Configuration for Flask"""
+
 import os
 
 class Config(object):
