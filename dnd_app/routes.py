@@ -1,5 +1,6 @@
 from flask import Flask, flash, redirect, render_template, request, url_for
 from dnd_app import app
+from dnd_app.accountForms import RegistrationForm
 
 
 
@@ -20,6 +21,9 @@ def login():
 def accountCreate():  # needs Username password, email
     # TODO
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Account Creation Requested for user {}'.format(
+            form.username.data))
     return render_template('accountCreation.html', title='Create Account', form=form)
 
 
@@ -50,6 +54,5 @@ def gameCreate(user):
 
 @app.route('/<user>/modifyGame', methods=['POST', 'GET'])
 def gameModify(user, game):
-
     # TODO
     return render_template('modifyGame.html', title='Create game')
