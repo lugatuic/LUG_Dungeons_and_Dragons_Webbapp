@@ -1,3 +1,4 @@
+"""Initialize Flask Server"""
 from flask import Flask
 from config import Config
 
