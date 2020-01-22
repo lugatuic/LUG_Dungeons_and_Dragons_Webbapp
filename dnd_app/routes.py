@@ -8,7 +8,8 @@ from dnd_app.account_forms import RegistrationForm
 @app.route('/')
 def home():
     """Homepage"""
-    return render_template('index.html', title='Home')
+    #return render_template('index.html', title='Home')
+    return account_create()
 
 
 @app.route('/login', methods=['POST', 'GET'])
