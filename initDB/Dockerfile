@@ -1,6 +1,6 @@
-FROM mysql/mysql-server:latest
+FROM mysql:latest
 
-ENV MYSQL_DATABASE lugdnd
+ENV MYSQL_DATABASE lugdb
 
 COPY ./build_db.sql /docker-entrypoint-initdb.d/
 #COPY starter_data.sql /docker-entrypoint-initdb.d/

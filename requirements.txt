@@ -3,3 +3,4 @@ pydocstyle
 tox
 flask
 flask-wtf
+flask-mysqldb
