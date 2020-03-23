@@ -1,17 +1,17 @@
 """Routing functions for Flask"""
 
 from flask import Flask, flash, redirect, render_template, request, url_for
-from flask_mysqldb import MySQL
-from dnd_app import app,mysql
-from dnd_app.account_forms import RegistrationForm
+#from flask_mysqldb import MySQL
+from dnd_app import app, mysql
+from dnd_app.account_forms import RegistrationForm, LoginForm
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 @app.route('/')
 def home():
     """Homepage"""
     #return render_template('index.html', title='Home')
-    return account_create()
-
+    return redirect(url_for('account_create'))
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -27,14 +27,17 @@ def account_create():  # needs Username password, email
     """Account creation form"""
     # mysql cursor
     cursor = mysql.connection.cursor()
-    # TODO: escape strings, password hashing, docker-compose file
+    # TODO: escape strings(prevent mysql injection) 
     form = RegistrationForm()
     if form.validate_on_submit():
+        # Hash password and insert into database
+        password = generate_password_hash(form.password.data)
         cursor.execute('''INSERT INTO account(accountName, password, email)
-        VALUES (%s,%s,%s)''', (form.username.data, form.password.data, form.email.data))
+        VALUES (%s,%s,%s)''', (form.username.data, password, form.email.data))
         mysql.connection.commit()
-        #cursor.close
+        cursor.close()
         flash("Done. WELCOME!!!!!")
+        return redirect(url_for('login'))
     return render_template(
         'accountCreation.html', title='Create Account', form=form)
 
