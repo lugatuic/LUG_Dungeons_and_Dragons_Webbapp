@@ -17,7 +17,9 @@ class User(UserMixin):
             cursor.execute("SELECT * FROM account WHERE accountName=%s", (key,))
         uservalues = cursor.fetchone()
         cursor.close()
-        ## Populate Object.
+        ## Populate Object if key returns a relation.
+        if uservalues is None:
+            return None
         self.id = uservalues['id']
         self.account_name = uservalues['accountName']
         self.password = uservalues['password']
