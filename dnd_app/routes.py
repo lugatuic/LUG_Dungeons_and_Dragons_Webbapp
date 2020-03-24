@@ -21,10 +21,11 @@ def login():
         return redirect(url_for('home'))
     form = LoginForm()  # username + password
     if form.validate_on_submit():
-        user = User(str(form.username.data))
         ## populate User by username and check password if user exists
-        if user is None or not check_password_hash(user.password,
-                                                   form.password.data):
+        user = User(str(form.username.data))
+        print(user)
+        if user.id is '' or not check_password_hash(user.password,
+                                                    form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
         ## Login successful
