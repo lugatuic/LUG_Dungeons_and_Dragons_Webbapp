@@ -1,24 +1,35 @@
 """Routing functions for Flask"""
-
 from flask import Flask, flash, redirect, render_template, request, url_for
-#from flask_mysqldb import MySQL
+from flask_login import current_user, login_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from dnd_app import app, mysql
 from dnd_app.account_forms import RegistrationForm, LoginForm
-from werkzeug.security import generate_password_hash, check_password_hash
+from dnd_app.models import User
 
 
 @app.route('/')
 def home():
     """Homepage"""
-    #return render_template('index.html', title='Home')
-    return redirect(url_for('account_create'))
+    return render_template('index.html', title='Home')
+    #return redirect(url_for('account_create'))
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     """Login form"""
-    form = LoginForm()  # username +password
-    if request.method == 'POST':  # TODO
-        print("yes")
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = LoginForm()  # username + password
+    if form.validate_on_submit():
+        user = User(str(form.username.data))
+        ## populate User by username and check password if user exists
+        if user is None or not check_password_hash(user.password,
+                                                   form.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
+        ## Login successful
+        login_user(user, remember=form.remember.data)
+        return redirect(url_for('home'))
     return render_template('login.html', title='Sign In', form=form)
 
 
@@ -27,7 +38,7 @@ def account_create():  # needs Username password, email
     """Account creation form"""
     # mysql cursor
     cursor = mysql.connection.cursor()
-    # TODO: escape strings(prevent mysql injection) 
+    # TODO: escape strings(prevent mysql injection)
     form = RegistrationForm()
     if form.validate_on_submit():
         # Hash password and insert into database
@@ -40,7 +51,6 @@ def account_create():  # needs Username password, email
         return redirect(url_for('login'))
     return render_template(
         'accountCreation.html', title='Create Account', form=form)
-
 
 @app.route('/<user>/createCharacter', methods=['POST', 'GET'])
 def character_create(user):
