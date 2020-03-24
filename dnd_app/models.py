@@ -17,13 +17,19 @@ class User(UserMixin):
             cursor.execute("SELECT * FROM account WHERE accountName=%s", (key,))
         uservalues = cursor.fetchone()
         cursor.close()
-        ## Populate Object if key returns a relation.
+        ## Populate Object.
         if uservalues is None:
-            return None
-        self.id = uservalues['id']
-        self.account_name = uservalues['accountName']
-        self.password = uservalues['password']
-        self.email = uservalues['email']
+            ## Key not found, populate with empty strings.
+            self.id = ''
+            self.account_name = ''
+            self.password = ''
+            self.email = ''
+        else:
+            ## Key found.
+            self.id = uservalues['id']
+            self.account_name = uservalues['accountName']
+            self.password = uservalues['password']
+            self.email = uservalues['email']
 
 
 @login.user_loader
