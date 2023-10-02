@@ -1,2 +1,2 @@
 # LUG_Dungeons_and_Dragons_Webbapp
-* Project Lead: Misha Ryabko
+* Project Lead: Amy Ngo
