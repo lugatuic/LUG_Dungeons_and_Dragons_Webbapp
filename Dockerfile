@@ -1,4 +1,4 @@
-FROM fedora:26
+FROM debian:12
 MAINTAINER: "Bennett Maciorowski"
 
 COPY requirements.txt /root/requirements.txt
